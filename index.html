@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KP Academy</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: #222;
+  position: relative;
+}
+
+/* Watermark background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: url('watermark.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keep content above watermark */
+header, section, footer {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 1100px;
+  margin: auto;
+}
+
+header img {
+  height: 60px;
+}
+
+header .right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-text { flex: 1; }
+.hero-image { flex: 1; text-align: center; }
+
+.hero-image img {
+  width: 100%;
+  max-width: 320px;
+}
+
+.hero-buttons { margin-top: 20px; }
+
+button {
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.primary { background: #0b3c5d; color: white; }
+.whatsapp { background: #25D366; color: white; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.image-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+
+.slider .card { min-width: 250px; }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0b3c5d;
+  color: white;
+}
+
+@media(max-width:768px){
+  .hero { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" alt="KP Academy Logo">
+  <div class="right">
+    <a href="https://www.instagram.com/k.p._academy/" target="_blank">
+      <button class="primary">Instagram</button>
+    </a>
+    <a href="https://wa.me/919140040368">
+      <button class="whatsapp">Chat on WhatsApp</button>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Helping Class 6–10 Students Strengthen Their Foundation and Improve Academic Performance</h1>
+    <p>Small batches. Regular tests. Structured progress tracking.</p>
+    <div class="hero-buttons">
+      <a href="https://forms.gle/iNPQ66Ny9SPUiJH78" target="_blank">
+        <button class="primary">Book Free Assessment</button>
+      </a>
+      <a href="https://wa.me/919140040368">
+        <button class="whatsapp">Chat on WhatsApp</button>
+      </a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="poster.png" alt="Poster">
+  </div>
+</section>
+
+
+<section>
+  <h2>Who This Is For</h2>
+  <div class="grid">
+    <div class="card">Students who want to improve academic performance</div>
+    <div class="card">Students needing stronger foundation</div>
+    <div class="card">Students not seeing expected results</div>
+  </div>
+</section>
+
+<section>
+  <h2>Our Approach</h2>
+  <div class="grid">
+    <div class="card image-card"><img src="approach1.jpg">Small batches</div>
+    <div class="card image-card"><img src="approach2.jpg">Regular tests</div>
+    <div class="card image-card"><img src="approach3.jpg">Monthly tracking</div>
+    <div class="card image-card"><img src="approach4.jpg">Concept clarity</div>
+  </div>
+</section>
+
+<section>
+  <h2>Student Progress</h2>
+  <div class="grid">
+    <div class="card image-card"><img src="result1.jpg">Consistent improvement</div>
+    <div class="card image-card"><img src="result2.jpg">Better confidence</div>
+  </div>
+</section>
+
+<section>
+  <h2>What Students Say</h2>
+  <div class="slider">
+    <div class="card">"Concepts are clear now."</div>
+    <div class="card">"Tests helped consistency."</div>
+    <div class="card">"Confidence improved."</div>
+    <div class="card">"Teaching is simple and clear."</div>
+  </div>
+</section>
+
+<section>
+  <h2>What We Offer</h2>
+  <div class="grid">
+    <div class="card">✔ Identify current level</div>
+    <div class="card">✔ Demo classes</div>
+    <div class="card">✔ Improvement guidance</div>
+    <div class="card">✔ School entrance prep</div>
+    <div class="card">✔ UG entrance prep</div>
+  </div>
+  <p style="text-align:center; margin-top:20px;"><strong>Limited seats per batch</strong></p>
+</section>
+
+<footer>
+  KP Academy © 2026
+</footer>
+
+</body>
+</html>
