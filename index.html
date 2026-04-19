@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KP Academy</title>
-<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -13,10 +14,9 @@ body {
   margin: 0;
   background: #f9f9f9;
   color: #222;
-  position: relative;
 }
 
-/* Watermark background */
+/* WATERMARK */
 body::before {
   content: "";
   position: fixed;
@@ -29,70 +29,131 @@ body::before {
   background-size: contain;
   opacity: 0.05;
   z-index: 0;
-  pointer-events: none;
 }
 
-/* Keep content above watermark */
 header, section, footer {
   position: relative;
   z-index: 1;
 }
 
+/* TOP BAR */
+.popup-bar {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0b3c5d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.popup-bar button {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* POPUP */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 350px;
+  position: relative;
+}
+
+.popup-box img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* HEADER */
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 30px;
   background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   max-width: 1100px;
   margin: auto;
 }
 
-header img {
-  height: 60px;
-}
+header img { height: 60px; }
 
 header .right {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
+/* BUTTONS */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary { background: #0b3c5d; color: white; }
+.whatsapp { background: #25D366; color: white; }
+
+/* SECTIONS */
 section {
   padding: 60px 20px;
   max-width: 1100px;
   margin: auto;
 }
 
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* HERO */
 .hero {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 40px;
+  align-items: center;
 }
 
 .hero-text { flex: 1; }
 .hero-image { flex: 1; text-align: center; }
 
 .hero-image img {
-  width: 100%;
   max-width: 320px;
+  width: 100%;
 }
 
-.hero-buttons { margin-top: 20px; }
-
-button {
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  border-radius: 5px;
-}
-
-.primary { background: #0b3c5d; color: white; }
-.whatsapp { background: #25D366; color: white; }
-
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -106,21 +167,23 @@ button {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.image-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.slider {
+/* TESTIMONIALS */
+.testimonial-scroll {
   display: flex;
   overflow-x: auto;
   gap: 20px;
 }
 
-.slider .card { min-width: 250px; }
+.testimonial-card {
+  min-width: 280px;
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  border-left: 4px solid #0b3c5d;
+}
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
@@ -136,89 +199,169 @@ footer {
 
 <body>
 
+<!-- TOP BAR -->
+<div class="popup-bar" id="popupBar">
+  🔥 Limited Seats — New Batch Starting Soon
+  <button onclick="closeBar()">X</button>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">X</button>
+    <a href="https://wa.me/919140040368?text=Hi%20I%20want%20to%20join%20summer%20classes">
+      <img src="summerposter.png">
+    </a>
+  </div>
+</div>
+
 <header>
-  <img src="logo.png" alt="KP Academy Logo">
+  <img src="logo.png">
   <div class="right">
     <a href="https://www.instagram.com/k.p._academy/" target="_blank">
       <button class="primary">Instagram</button>
     </a>
     <a href="https://wa.me/919140040368">
-      <button class="whatsapp">Chat on WhatsApp</button>
+      <button class="whatsapp">WhatsApp</button>
     </a>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>Helping Class 6–10 Students Strengthen Their Foundation and Improve Academic Performance</h1>
-    <p>Small batches. Regular tests. Structured progress tracking.</p>
-    <div class="hero-buttons">
-      <a href="https://forms.gle/iNPQ66Ny9SPUiJH78" target="_blank">
-        <button class="primary">Book Free Assessment</button>
-      </a>
-      <a href="https://wa.me/919140040368">
-        <button class="whatsapp">Chat on WhatsApp</button>
-      </a>
-    </div>
+    <h1>
+      Struggling with Maths or Commerce Subjects?<br>
+      Improve Your Marks with Small Batch Coaching
+    </h1>
+
+    <p>Class 6–10 | Class 11–12 Commerce • Personal attention • Regular tests</p>
+
+    <a href="https://forms.gle/iNPQ66Ny9SPUiJH78" target="_blank">
+      <button class="primary">Book Free Demo Class</button>
+    </a>
+
+    <a href="https://wa.me/919140040368">
+      <button class="whatsapp">Chat on WhatsApp</button>
+    </a>
   </div>
+
   <div class="hero-image">
-    <img src="poster.png" alt="Poster">
+    <img src="poster.png">
   </div>
 </section>
 
+<!-- UPDATES SECTION -->
+<section>
+  <h2>📢 Updates!</h2>
 
+  <div class="hero">
+
+    <div class="hero-text">
+      <h2>Summer Special Classes Now Open</h2>
+
+      <p>This summer, help your child gain an edge with skills most students lack today.</p>
+
+      <ul style="line-height:1.8;">
+        <li>⚡ Improve Calculation Speed</li>
+        <li>🧠 Mental Maths Techniques</li>
+        <li>🗣 Spoken English Practice</li>
+      </ul>
+
+      <p><b>Limited Seats • Short-term Batches • Fast Improvement</b></p>
+
+      <a href="https://wa.me/918840613085?text=Hi%20I%20want%20to%20join%20summer%20classes">
+        <button class="whatsapp">Join Summer Batch</button>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <img src="summerposter.png">
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO -->
 <section>
   <h2>Who This Is For</h2>
   <div class="grid">
-    <div class="card">Students who want to improve academic performance</div>
-    <div class="card">Students needing stronger foundation</div>
-    <div class="card">Students not seeing expected results</div>
+    <div class="card">Class 6–10 students struggling in Maths/Science</div>
+    <div class="card">Class 11–12 Commerce students needing clarity</div>
+    <div class="card">Students lacking confidence in exams</div>
+    <div class="card">Students needing personal attention</div>
   </div>
 </section>
 
-<section>
-  <h2>Our Approach</h2>
-  <div class="grid">
-    <div class="card image-card"><img src="approach1.jpg">Small batches</div>
-    <div class="card image-card"><img src="approach2.jpg">Regular tests</div>
-    <div class="card image-card"><img src="approach3.jpg">Monthly tracking</div>
-    <div class="card image-card"><img src="approach4.jpg">Concept clarity</div>
-  </div>
-</section>
-
-<section>
-  <h2>Student Progress</h2>
-  <div class="grid">
-    <div class="card image-card"><img src="result1.jpg">Consistent improvement</div>
-    <div class="card image-card"><img src="result2.jpg">Better confidence</div>
-  </div>
-</section>
-
-<section>
-  <h2>What Students Say</h2>
-  <div class="slider">
-    <div class="card">"Concepts are clear now."</div>
-    <div class="card">"Tests helped consistency."</div>
-    <div class="card">"Confidence improved."</div>
-    <div class="card">"Teaching is simple and clear."</div>
-  </div>
-</section>
-
+<!-- WHAT WE OFFER -->
 <section>
   <h2>What We Offer</h2>
   <div class="grid">
-    <div class="card">✔ Identify current level</div>
-    <div class="card">✔ Demo classes</div>
-    <div class="card">✔ Improvement guidance</div>
-    <div class="card">✔ School entrance prep</div>
-    <div class="card">✔ UG entrance prep</div>
+    <div class="card">Small batch size (8–10 students)</div>
+    <div class="card">Regular tests & progress tracking</div>
+    <div class="card">Concept clarity focused teaching</div>
+    <div class="card">Structured learning approach</div>
+    <div class="card">Entrance exam preparation</div>
   </div>
-  <p style="text-align:center; margin-top:20px;"><strong>Limited seats per batch</strong></p>
 </section>
 
-<footer>
-  KP Academy © 2026
+<!-- TESTIMONIALS -->
+<section>
+  <h2>What Students Say</h2>
+
+  <div class="testimonial-scroll">
+
+    <div class="testimonial-card">
+      <p>“Maths was very confusing earlier, now I understand concepts clearly.”</p>
+      <span>— Class 9 Student</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>“Regular tests helped me stay consistent and improve my marks.”</p>
+      <span>— Class 10 Student</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>“Earlier I was weak in basics, now my foundation is strong.”</p>
+      <span>— Class 11 Commerce</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>“Doubt solving is very strong here, no question is left unanswered.”</p>
+      <span>— Class 12 Commerce</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>“I gained confidence in exams and improved performance.”</p>
+      <span>— Class 8 Student</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>“Accounts and Economics felt difficult, now everything is structured and easy.”</p>
+      <span>— Class 11 Commerce</span>
+    </div>
+
+  </div>
+</section><footer>
+  KP Academy © 2026 <br>
+  C6/65 Bagh Bariyar Singh, Chetganj, Varanasi
 </footer>
+
+<script>
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+function closeBar(){
+  document.getElementById("popupBar").style.display="none";
+}
+
+window.onload = function(){
+  setTimeout(()=>{
+    document.getElementById("popup").style.display="flex";
+  }, 3000);
+}
+</script>
 
 </body>
 </html>
